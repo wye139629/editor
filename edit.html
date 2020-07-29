@@ -4,12 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Document</title>
+  <style>
+    .container{
+      box-sizing: border-box;
+      padding: 50px;
+    }
+    .toolbar{
+      padding: 15px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: rgb(240, 238, 238);
+    }
+    .toolbar ul{
+      font-size: 25px;
+      display: flex;
+    }
+    .toolbar ul li+li{
+      margin-left: 20px;
+    }
+    .editor{
+      box-sizing: border-box;
+      padding: 50px;
+      height: 100vh;
+      border: 1px solid black;
+    }
+  </style>
 </head>
-
 <body>
-  <div class="editor" contenteditable="true">
-
+  <div class="container">
+    <div class="toolbar">
+      <ul>
+        <li><i class="fa fa-bold" aria-hidden="true"></i></li>
+        <li><i class="fa fa-italic" aria-hidden="true"></i></li>
+        <li><i class="fa fa-list-ul" aria-hidden="true"></i></li>
+      </ul>
+    </div>
+    <div class="editor" contenteditable="true">
+    </div>
   </div>
+  
 </body>
 </html>
