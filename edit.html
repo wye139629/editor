@@ -22,6 +22,13 @@
       font-size: 25px;
       display: flex;
     }
+    .toolbar ul li{
+      cursor: pointer;
+      color: rgb(134, 134, 134);
+    }
+    .toolbar ul li:hover{
+      color: rgb(0, 0, 0);
+    }
     .toolbar ul li+li{
       margin-left: 20px;
     }
@@ -31,20 +38,35 @@
       height: 100vh;
       border: 1px solid black;
     }
+    
   </style>
 </head>
 <body>
   <div class="container">
     <div class="toolbar">
       <ul>
-        <li><i class="fa fa-bold" aria-hidden="true"></i></li>
-        <li><i class="fa fa-italic" aria-hidden="true"></i></li>
-        <li><i class="fa fa-list-ul" aria-hidden="true"></i></li>
+        <li><i class="fa fa-bold"  data-name="bold" aria-hidden="true"></i></li>
+        <li><i class="fa fa-italic"  data-name="italic" aria-hidden="true"></i></li>
+        <li><i class="fa fa-list-ul" data-name="insertunorderlist" aria-hidden="true"></i></li>
       </ul>
     </div>
-    <div class="editor" contenteditable="true">
+    <div class="editor">
     </div>
   </div>
   
+  <script>
+    window.addEventListener('load',function() {
+      const editor = document.querySelector(`.editor`)
+      editor.setAttribute('contenteditable','true')
+    })
+
+    function clickhandler(e) {
+      let name = e.target.dataset.name
+      document.execCommand(name,false)
+      
+    }
+    const tools = document.querySelectorAll(`.fa`)
+    tools.forEach((tool) => {tool.addEventListener('click',clickhandler)})
+  </script>
 </body>
 </html>
