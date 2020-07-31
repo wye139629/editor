@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="reset.css">
+  <!-- <link rel="stylesheet" href="reset.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Document</title>
   <style>
@@ -38,17 +38,21 @@
       height: 100vh;
       border: 1px solid black;
     }
+    b {
+      font-weight: bold;
+    }
+    i {
+      font-style: italic;
+    }
     
   </style>
 </head>
 <body>
   <div class="container">
     <div class="toolbar">
-      <ul>
-        <li><i class="fa fa-bold"  data-name="bold" aria-hidden="true"></i></li>
-        <li><i class="fa fa-italic"  data-name="italic" aria-hidden="true"></i></li>
-        <li><i class="fa fa-list-ul" data-name="insertunorderlist" aria-hidden="true"></i></li>
-      </ul>
+      <a href="####"><span class="fa fa-bold"  data-name="bold"></span></a>
+      <a href="###"><span class="fa fa-italic"  data-name="italic"></span></a>
+      <a href="###"><span class="fa fa-list-ul" data-name="insertunorderlist"></span></a>
     </div>
     <div class="editor">
     </div>
@@ -58,15 +62,21 @@
     window.addEventListener('load',function() {
       const editor = document.querySelector(`.editor`)
       editor.setAttribute('contenteditable','true')
+      const tools = document.querySelectorAll('span')
+      tools.forEach((tool) => {
+      tool.addEventListener('click', function(e){clickhandler(e)})
+      })
     })
 
     function clickhandler(e) {
+      e.preventDefault()
+      // let str = document.getSelection()
       let name = e.target.dataset.name
-      document.execCommand(name,false)
+      // let name = e.currentTarget.childNodes[0].dataset.name
+      document.execCommand(name, false)
+      // document.execCommand(name, false)
       
     }
-    const tools = document.querySelectorAll(`.fa`)
-    tools.forEach((tool) => {tool.addEventListener('click',clickhandler)})
   </script>
 </body>
 </html>
